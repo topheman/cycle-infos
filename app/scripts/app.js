@@ -9,8 +9,8 @@ angular.module('cycleInfosFullstackApp', [
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'partials/main',
-        controller: 'MainCtrl'
+        templateUrl: 'partials/home',
+        controller: 'HomeCtrl'
       })
       .otherwise({
         redirectTo: '/'
