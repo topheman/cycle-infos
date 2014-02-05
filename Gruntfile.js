@@ -328,6 +328,13 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      config: {
+        files:[
+          {src: 'lib/config/env/development.default.js', dest : 'lib/config/env/development.js'},
+          {src: 'lib/config/env/production.default.js', dest : 'lib/config/env/production.js'},
+          {src: 'lib/config/env/test.default.js', dest : 'lib/config/env/test.js'}
+        ]
       }
     },
 
