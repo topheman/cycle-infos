@@ -10,7 +10,9 @@ section{
   margin-top: $navbar-height;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  
+/* Responsive: Mobiles */
+@media screen and (max-width: 480px) {
+  section{
+    margin-top: $navbar-height-mobile;
+  }
 }

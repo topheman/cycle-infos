@@ -8,45 +8,79 @@ header.site-header{
   z-index: 1000;
   height: $navbar-height;
   background-color: #EEE;
+  h1,h2{
+    margin:0px;
+    padding:0px;
+  }
   
   nav{
     max-width: 768px;
     margin: 0 auto;
   }
   
-  a.home-link{
+  .header-logo{
     width:140px;
-    height:60px;
+    height:$navbar-height;
     float:left;
     background-color:red;
-    h1{
+    span{
       display: none;
     }
   }
   
   ul.header-access{
     width:210px;
-    height:46px;
+    height:$navbar-height;
     float:right;
     list-style: none;
     margin:0px;
-    li{
-    }
-    li.settings{
+    li.header-access-settings{
       background-image : url(../images/glyphicons_136_cogwheel.png);
       background-repeat: no-repeat;
       width: 24px;
       height: 24px;
       float: right;
     }
-    li.location-search{
+    li.header-access-location-search{
       width: 180px;
-      float:left;
+      float:right;
+      margin-right: 5px;
+      input{
+        width:180px;
+      }
+    }
+    li.header-access-infos{
+      text-align: right;
     }
   }
   
-  h2.sub-title{
+  .header-title{
     margin: 0px auto;
     text-align: center;
+  }
+}
+
+/* Responsive: Mobiles */
+@media screen and (max-width : 480px) {
+  header.site-header{
+    height: $navbar-height-mobile;
+    ul.header-access{
+      width:150px;
+      height:$navbar-height-mobile;
+      li.header-access-location-search{
+        width: 120px;
+        input{
+          width:120px;
+        }
+      }
+    }
+  
+    .header-title{
+      display: none;
+    }
+    .header-logo{
+      width:70px;
+      height:$navbar-height-mobile;
+    }
   }
 }
