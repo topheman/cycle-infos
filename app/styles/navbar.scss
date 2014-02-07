@@ -1,3 +1,5 @@
+@import '_variables';
+
 header.site-header{
   position: fixed;
   top: 0;
@@ -13,8 +15,8 @@ header.site-header{
   }
   
   a.home-link{
-    width:120px;
-    height:46px;
+    width:140px;
+    height:60px;
     float:left;
     background-color:red;
     h1{
