@@ -1,86 +1,31 @@
 @import '_variables';
 
-header.site-header{
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1000;
-  height: $navbar-height;
-  background-color: #EEE;
-  h1,h2{
-    margin:0px;
-    padding:0px;
-  }
-  
+header{
   nav{
-    max-width: 768px;
-    margin: 0 auto;
-  }
-  
-  .header-logo{
-    width:140px;
-    height:$navbar-height;
-    float:left;
-    background-color:red;
-    span{
-      display: none;
+    .container-fluid{
+      max-width: 768px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
-  
-  ul.header-access{
-    width:210px;
-    height:$navbar-height;
-    float:right;
-    list-style: none;
-    margin:0px;
-    li.header-access-settings{
-      background-image : url(../images/glyphicons_136_cogwheel.png);
-      background-repeat: no-repeat;
-      width: 24px;
-      height: 24px;
-      float: right;
-    }
-    li.header-access-location-search{
-      width: 180px;
-      float:right;
-      margin-right: 5px;
-      input{
-        width:180px;
-      }
-    }
-    li.header-access-infos{
-      text-align: right;
-    }
+  nav.navbar{
+    min-height: $navbar-height;
   }
-  
-  .header-title{
-    margin: 0px auto;
-    text-align: center;
+  .left-inner-addon {
+    position: relative;
+  }
+  .left-inner-addon input {
+    padding-left: 30px;    
+  }
+  .left-inner-addon i {
+    position: absolute;
+    left: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
   }
 }
 
 /* Responsive: Mobiles */
 @media screen and (max-width : 480px) {
-  header.site-header{
-    height: $navbar-height-mobile;
-    ul.header-access{
-      width:150px;
-      height:$navbar-height-mobile;
-      li.header-access-location-search{
-        width: 120px;
-        input{
-          width:120px;
-        }
-      }
-    }
-  
-    .header-title{
-      display: none;
-    }
-    .header-logo{
-      width:70px;
-      height:$navbar-height-mobile;
-    }
-  }
+
 }
