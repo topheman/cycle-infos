@@ -11,17 +11,28 @@ header{
   nav.navbar{
     min-height: $navbar-height;
   }
-  .left-inner-addon {
-    position: relative;
-  }
-  .left-inner-addon input {
-    padding-left: 30px;    
-  }
-  .left-inner-addon i {
-    position: absolute;
-    left: 0px;
-    padding: 10px 12px;
-    pointer-events: none;
+  ul.navbar-header{
+    margin:15px 15px 0px;
+    padding:0px;
+    list-style: none;
+    li{
+      float: left;
+    }
+    li.search-wrapper {
+      position: relative;
+      input{
+        padding-left: 30px;    
+      }
+      i {
+        position: absolute;
+        left: 0px;
+        padding: 10px 12px;
+        pointer-events: none;
+      }
+    }
+    li.settings-wrapper{
+      margin-left: 10px;
+    }
   }
 }
 
