@@ -44,23 +44,30 @@ header{
     li.search-wrapper{
       display:none;
     }
+    .logo-light{
+      display:none;
+    }
   }
 }
 
 /* Responsive: Mobiles */
 @media screen and (max-width : 480px) {
-  header{
-    .logo{
-      display:none;
+  #view-map{
+    header{
+      .logo{
+        display:none;
+      }
     }
   }
 }
 
 /* Other : Tablet - Desktop */
 @media screen and (min-width : 480px) {
-  header{
-    .logo-light{
-      display:none;
+  #view-map{
+    header{
+      .logo-light{
+        display:none;
+      }
     }
   }
 }
