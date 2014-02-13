@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: HomeCtrl', function () {
+describe('Directive: common', function () {
 
   it('should make a unit test ...', function () {
   });
