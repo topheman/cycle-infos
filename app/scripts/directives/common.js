@@ -1,8 +1,8 @@
 'use strict';
 
-var module = angular.module('cycleInfosFullstackApp');
+var myModule = angular.module('cycleInfosFullstackApp');
 
-module.directive('goClick', ['$location', function($location) {
+myModule.directive('goClick', ['$location', function($location) {
       return function(scope, element, attrs) {
         var path;
 
