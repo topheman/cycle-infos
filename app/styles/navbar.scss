@@ -11,7 +11,12 @@ header{
   nav.navbar{
     min-height: $navbar-height;
   }
-  ul.navbar-header{
+  .home-anchor-wrapper{
+    .btn{
+      margin: 15px 0px 0px 15px;
+    }
+  }
+  ul.input-wrapper{
     margin:15px 15px 0px;
     padding:0px;
     list-style: none;
@@ -21,6 +26,7 @@ header{
     li.search-wrapper {
       position: relative;
       input{
+        width:180px;
         padding-left: 30px;    
       }
       i {
@@ -30,13 +36,31 @@ header{
         pointer-events: none;
       }
     }
-    li.settings-wrapper{
-      margin-left: 10px;
+  }
+}
+
+#view-home{
+  header{
+    li.search-wrapper{
+      display:none;
     }
   }
 }
 
 /* Responsive: Mobiles */
 @media screen and (max-width : 480px) {
+  header{
+    .logo{
+      display:none;
+    }
+  }
+}
 
+/* Other : Tablet - Desktop */
+@media screen and (min-width : 480px) {
+  header{
+    .logo-light{
+      display:none;
+    }
+  }
 }

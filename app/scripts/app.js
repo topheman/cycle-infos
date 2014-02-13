@@ -12,6 +12,10 @@ angular.module('cycleInfosFullstackApp', [
         templateUrl: 'partials/home',
         controller: 'HomeCtrl'
       })
+      .when('/map', {
+        templateUrl: 'partials/map',
+        controller: 'MapCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
