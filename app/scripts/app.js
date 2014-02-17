@@ -5,9 +5,10 @@ angular.module('cycleInfosFullstackApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+  'LocalStorageModule',
   'pascalprecht.translate'
 ])
-  .config(['$routeProvider', '$locationProvider', '$translateProvider',function ($routeProvider, $locationProvider, $translateProvider) {
+  .config(['$routeProvider', '$locationProvider', '$translateProvider', 'localStorageServiceProvider',function ($routeProvider, $locationProvider, $translateProvider, localStorageServiceProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'partials/home',
@@ -29,6 +30,6 @@ angular.module('cycleInfosFullstackApp', [
     $translateProvider.translations('fr',{
       'WELCOME' : 'Bienvenue à vous, {{username}}'
     });
-    $translateProvider.preferredLanguage('en');
-    
+    $translateProvider.preferredLanguage(localStorage ? localStorage.getItem('language') : 'en');
+    localStorageServiceProvider.setPrefix('');
   }]);
