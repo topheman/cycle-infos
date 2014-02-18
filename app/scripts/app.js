@@ -27,12 +27,16 @@ angular.module('cycleInfosFullstackApp', [
     $translateProvider.translations('en',{
       'WELCOME' : 'Welcome to you, {{username}}',
       'HOME_SELECT_CHOICE' : 'Choose a service / city',
-      'MAP_SEARCH_PLACEHOLDER' : 'Enter a location ...'
+      'MAP_SEARCH_PLACEHOLDER' : 'Enter a location ...',
+      'CITY': 'City',
+      'CITIES': 'Cities'
     });
     $translateProvider.translations('fr',{
       'WELCOME' : 'Bienvenue à vous, {{username}}',
       'HOME_SELECT_CHOICE' : 'Choisissez un service / une ville',
-      'MAP_SEARCH_PLACEHOLDER' : 'Entrez une adresse ..'
+      'MAP_SEARCH_PLACEHOLDER' : 'Entrez une adresse ..',
+      'CITY': 'Ville',
+      'CITIES': 'Villes'
     });
     $translateProvider.preferredLanguage(localStorage ? localStorage.getItem('language') : 'en');
     localStorageServiceProvider.setPrefix('');
