@@ -17,7 +17,7 @@
         </label>
       </div>
       <select class="form-control" ng-model="contract" ng-options="(contract.name + ' / ' + contract.commercial_name) for contract in contracts">
-        <option value="">-- Choose a service / city --</option>
+        <option value="">-- {{ 'HOME_SELECT_CHOICE' | translate }} --</option>
       </select>
     </div>
     <div ng-include="'partials/home_intro_' + language + '.html'"></div>

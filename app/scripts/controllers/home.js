@@ -11,6 +11,6 @@ angular.module('cycleInfosFullstackApp')
     //change language at runtime in settings and save it in localStorage
     $scope.$watch('language',function(value){
       localStorageService.add('language',value);
-      $translate.uses(value);
+      $translate.use(value);
     });
   });
