@@ -1,8 +1,14 @@
 'use strict';
 
 angular.module('cycleInfosFullstackApp')
-  .service('api', ['$http','$q','localStorageService',function ($http,$q,localStorageService) {
-      
+  .service('api', ['$http','$q','localStorageService', '$angularCacheFactory', function ($http,$q,localStorageService,$angularCacheFactory) {
+    
+    var stationsCache = $angularCacheFactory('stationsCache', {
+      maxAge: 5000,
+      storageMode: 'localStorage',
+      verifyIntegrity: true
+    });
+    
     var getCurrentContract = function(){
       return localStorageService.get('currentContract');
     };
@@ -27,8 +33,21 @@ angular.module('cycleInfosFullstackApp')
       return def.promise;
     };
     
+    var getStations = function(force, contract){
+      var cache     = !force === true ? stationsCache : false;
+      console.log('cache',cache);
+      contract  = typeof contract !== "undefined" ? contract : getCurrentContract();
+      return $http({
+        'method'  : 'GET',
+        'url'     : '/api/stations/?contract='+contract,
+        'cache'   : cache
+      });
+    };
+    
     return {
       getCurrentContract  : getCurrentContract,
-      getContracts        : getContracts
+      getContracts        : getContracts,
+      getStations         : getStations
     };
+    
   }]);
