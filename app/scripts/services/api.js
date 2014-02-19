@@ -9,6 +9,10 @@ angular.module('cycleInfosFullstackApp')
       verifyIntegrity: true
     });
     
+    var setCurrentContract = function(currentContract){
+      return localStorageService.set('currentContract',currentContract);
+    };
+    
     var getCurrentContract = function(){
       return localStorageService.get('currentContract');
     };
@@ -36,7 +40,7 @@ angular.module('cycleInfosFullstackApp')
     var getStations = function(force, contract){
       var cache     = !force === true ? stationsCache : false;
       console.log('cache',cache);
-      contract  = typeof contract !== "undefined" ? contract : getCurrentContract();
+      contract  = typeof contract !== 'undefined' ? contract : getCurrentContract();
       return $http({
         'method'  : 'GET',
         'url'     : '/api/stations/?contract='+contract,
@@ -44,10 +48,23 @@ angular.module('cycleInfosFullstackApp')
       });
     };
     
+    var helpersGetContractByName = function(contractName, contractList){
+      for(var i=0; i<contractList.length; i++){
+        if(contractName === contractList[i].name){
+          return contractList[i];
+        }
+      }
+      return null;
+    };
+    
     return {
+      setCurrentContract  : setCurrentContract,
       getCurrentContract  : getCurrentContract,
       getContracts        : getContracts,
-      getStations         : getStations
+      getStations         : getStations,
+      helpers             : {
+        getContractByName   : helpersGetContractByName
+      }
     };
     
   }]);
