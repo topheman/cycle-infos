@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('cycleInfosFullstackApp')
-        .controller('MapCtrl', function($scope, $timeout, $window, api) {
+        .controller('MapCtrl', function($scope, $timeout, api) {
 
           $scope.stations = [];
           $scope.displayRefreshButton = false;
@@ -34,9 +34,6 @@ angular.module('cycleInfosFullstackApp')
               };
               return marker;
             });
-            $timeout(function(){
-              $scope.fitMap = false;
-            },5000);//@todo on an event
             console.log($scope.stations);
           });
 

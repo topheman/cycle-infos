@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('cycleInfosFullstackApp')
-  .controller('HomeCtrl', function ($scope, $http, localStorageService,$filter,$translate, $location, api) {
+  .controller('HomeCtrl', function ($scope, localStorageService,$translate, $location, api) {
     
     $scope.language = localStorageService.get('language') || 'en';
     

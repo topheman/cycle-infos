@@ -2,7 +2,7 @@
 
 var myModule = angular.module('cycleInfosFullstackApp');
 
-myModule.directive('goClick', ['$location', function($location) {
+myModule.directive('goClick', function($location, $window, api) {
     return function(scope, element, attrs) {
       var path;
 
@@ -11,21 +11,29 @@ myModule.directive('goClick', ['$location', function($location) {
       });
 
       element.bind('click', function() {
-        scope.$apply(function() {
-          $location.path(path);
-        });
+        
+        //to free the memory reload page after Paris (big map, lots of markers)
+        if(api.getCurrentContract() === 'Paris'){
+          $window.location.href = path;
+        }
+        else{
+          scope.$apply(function() {
+            $location.path(path);
+          });
+        }
       });
+      
     };
-  }]);
+  });
 
 myModule.directive('topheMapResize', ['$window', function($window) {
     return function(scope, element, attrs) {
       console.log('directive topheMapResize', 'scope', scope, 'element', element, 'attrs', attrs);
       var resizeHandler,
-          marginTop = scope.$eval(attrs.topheMapResize).marginTop || 0,
-          timer = false,
-          isIPhoneIOS7 = false;//@todo iPhone detect
-  
+              marginTop = scope.$eval(attrs.topheMapResize).marginTop || 0,
+              timer = false,
+              isIPhoneIOS7 = false;//@todo iPhone detect
+
       resizeHandler = function() {
         clearTimeout(timer);
         timer = false;
@@ -36,15 +44,15 @@ myModule.directive('topheMapResize', ['$window', function($window) {
         google.maps.event.trigger(element, 'resize');
         console.log('launch resize');
       };
-      
+
       $window.addEventListener('resize', function(e) {
         if (!timer) {
           timer = setTimeout(resizeHandler, 800);
         }
       }, false);
-      
+
       //resize at first
       resizeHandler();
-      
+
     };
   }]);
