@@ -1,4 +1,7 @@
 @import '_variables';
 
 #view-map{
+  .angular-google-map-container {
+    height: 400px;
+  }
 }
