@@ -47,10 +47,19 @@ angular.module('cycleInfosFullstackApp')
 
           $scope.map = {
             center: {
-              latitude: 45,
-              longitude: -73
+              latitude: 48.856614,
+              longitude: 2.352222
             },
-            zoom: 8
+            zoom: 14,
+            options:{
+            }
           };
+          
+          //dirty
+          if(/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm|mobile|tablet/i.test(navigator.userAgent.toLowerCase())){
+            if(api.getCurrentContract() === 'Paris'){
+              $scope.map.options.minZoom = 14;
+            }
+          }
 
         });
