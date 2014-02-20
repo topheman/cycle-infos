@@ -5,6 +5,7 @@ angular.module('cycleInfosFullstackApp')
 
           $scope.stations = [];
           $scope.displayRefreshButton = false;
+          $scope.fitMap = true;
 
           var waitDisplayRefreshButton = function() {
             $timeout(function() {
@@ -33,6 +34,9 @@ angular.module('cycleInfosFullstackApp')
               };
               return marker;
             });
+            $timeout(function(){
+              $scope.fitMap = false;
+            },5000);//@todo on an event
             console.log($scope.stations);
           });
 

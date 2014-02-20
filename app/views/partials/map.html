@@ -7,10 +7,12 @@
           <li ng-repeat="station in stations">{{station}}</li>
         </ul>-->
     <google-map center="map.center" zoom="map.zoom" draggable="true" tophe-map-resize="{marginTop : 60}">
-      <markers models="stations" coords="'self'" labelContent="address" fit="true" click="'onClicked'">
+      <markers models="stations" coords="'self'" labelContent="address" fit="fitMap" click="'onClicked'">
         <windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
           <p ng-non-bindable>Address : {{address}}</p>
           <p ng-non-bindable>Name : {{name}}</p>
+          <p ng-non-bindable>{{'AVAILABLE_BIKES' | translate}} : {{available_bikes}}</p>
+          <p ng-non-bindable>{{'AVAILABLE_STANDS' | translate}} : {{available_bike_stands}}</p>
         </windows>
       </markers>
     </google-map>

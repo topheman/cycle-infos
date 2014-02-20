@@ -31,14 +31,18 @@ angular.module('cycleInfosFullstackApp', [
       'HOME_SELECT_CHOICE' : 'Choose a service / city',
       'MAP_SEARCH_PLACEHOLDER' : 'Enter a location ...',
       'CITY': 'City',
-      'CITIES': 'Cities'
+      'CITIES': 'Cities',
+      'AVAILABLE_BIKES' : 'Available bikes',
+      'AVAILABLE_STANDS' : 'Available stands'
     });
     $translateProvider.translations('fr',{
       'WELCOME' : 'Bienvenue à vous, {{username}}',
       'HOME_SELECT_CHOICE' : 'Choisissez un service / une ville',
       'MAP_SEARCH_PLACEHOLDER' : 'Entrez une adresse ..',
       'CITY': 'Ville',
-      'CITIES': 'Villes'
+      'CITIES': 'Villes',
+      'AVAILABLE_BIKES' : 'Vélos libres',
+      'AVAILABLE_STANDS' : 'Places libres'
     });
     $translateProvider.preferredLanguage(localStorage ? localStorage.getItem('language') : 'en');
     localStorageServiceProvider.setPrefix('');
