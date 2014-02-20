@@ -3,7 +3,14 @@
 angular.module('cycleInfosFullstackApp')
         .controller('MapCtrl', function($scope, $timeout, $window, api) {
 
+          $scope.stations = [];
           $scope.displayRefreshButton = false;
+
+          var waitDisplayRefreshButton = function() {
+            $timeout(function() {
+              $scope.displayRefreshButton = true;
+            }, 5000 || api.getCacheDuration());
+          };
 
           waitDisplayRefreshButton();
 
@@ -11,12 +18,6 @@ angular.module('cycleInfosFullstackApp')
             $scope.displayRefreshButton = false;
             waitDisplayRefreshButton();
           };
-
-          function waitDisplayRefreshButton() {
-            $timeout(function() {
-              $scope.displayRefreshButton = true;
-            }, 5000 || api.getCacheDuration());
-          }
 
           api.getStations().then(function(result) {
             $scope.stations = result.data.map(function(marker){

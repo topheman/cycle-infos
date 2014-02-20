@@ -21,8 +21,7 @@ myModule.directive('goClick', ['$location', function($location) {
 myModule.directive('topheMapResize', ['$window', function($window) {
     return function(scope, element, attrs) {
       console.log('directive topheMapResize', 'scope', scope, 'element', element, 'attrs', attrs);
-      var self = element,
-          resizeHandler,
+      var resizeHandler,
           marginTop = scope.$eval(attrs.topheMapResize).marginTop || 0,
           timer = false,
           isIPhoneIOS7 = false;//@todo iPhone detect
