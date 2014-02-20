@@ -12,19 +12,33 @@ angular.module('cycleInfosFullstackApp')
             waitDisplayRefreshButton();
           };
 
-          api.getStations().then(function(result) {
-            console.log(result);
-            $scope.stations = result.data;
-          });
-
           function waitDisplayRefreshButton() {
             $timeout(function() {
               $scope.displayRefreshButton = true;
             }, 5000 || api.getCacheDuration());
           }
-          
-          /** map resize */
-          console.log('$window',$window);
+
+          api.getStations().then(function(result) {
+            $scope.stations = result.data.map(function(marker){
+              marker.latitude = marker.position.lat;
+              marker.longitude = marker.position.lng;
+              marker.closeClick = function () {
+                marker.showWindow = false;
+                $scope.$apply();
+                console.log('close click');
+              };
+              marker.onClicked = function () {
+                onMarkerClicked(marker);
+              };
+              return marker;
+            });
+            console.log($scope.stations);
+          });
+
+          var onMarkerClicked = function (marker) {
+            marker.showWindow = true;
+            console.log('clicked');
+          };
 
           $scope.map = {
             center: {
