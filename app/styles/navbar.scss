@@ -11,6 +11,9 @@ header{
   nav.navbar{
     min-height: $navbar-height;
   }
+  .logo-refresh{
+    margin: 15px 0px 0px 15px;
+  }
   .home-anchor-wrapper{
     .btn{
       margin: 15px 0px 0px 15px;
@@ -47,6 +50,9 @@ header{
     .logo-light{
       display:none;
     }
+    .logo-refresh{
+      display:none;
+    }
   }
 }
 
@@ -56,6 +62,11 @@ header{
     header{
       .logo{
         display:none;
+      }
+      li.search-wrapper{
+        input{
+          width:160px;
+        }
       }
     }
   }

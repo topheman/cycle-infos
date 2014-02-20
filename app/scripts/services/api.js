@@ -3,8 +3,10 @@
 angular.module('cycleInfosFullstackApp')
   .service('api', ['$http','$q','localStorageService', '$angularCacheFactory', function ($http,$q,localStorageService,$angularCacheFactory) {
     
+    var CACHE_DURATION = 900000;
+    
     var stationsCache = $angularCacheFactory('stationsCache', {
-      maxAge: 5000,
+      maxAge: CACHE_DURATION,
       storageMode: 'localStorage',
       verifyIntegrity: true
     });
@@ -38,14 +40,20 @@ angular.module('cycleInfosFullstackApp')
     };
     
     var getStations = function(force, contract){
-      var cache     = !force === true ? stationsCache : false;
-      console.log('cache',cache);
+      
       contract  = typeof contract !== 'undefined' ? contract : getCurrentContract();
+      var url = '/api/stations/?contract='+contract;
+      
+      if(force === true){
+        stationsCache.remove(url);
+      }
+      
       return $http({
         'method'  : 'GET',
-        'url'     : '/api/stations/?contract='+contract,
-        'cache'   : cache
+        'url'     : url,
+        'cache'   : stationsCache
       });
+      
     };
     
     var helpersGetContractByName = function(contractName, contractList){
@@ -62,6 +70,9 @@ angular.module('cycleInfosFullstackApp')
       getCurrentContract  : getCurrentContract,
       getContracts        : getContracts,
       getStations         : getStations,
+      getCacheDuration    : function(){
+        return CACHE_DURATION;
+      },
       helpers             : {
         getContractByName   : helpersGetContractByName
       }
