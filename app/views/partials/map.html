@@ -1,7 +1,7 @@
 <div id="view-map">
   <div ng-include="'partials/navbar'"></div>
   <section>
-    <google-map center="map.center" zoom="map.zoom" options="map.options" draggable="true" bounds="map.bounds" events="map.events" tophe-map-resize="{marginTop : 60}">
+    <google-map center="map.center" zoom="map.zoom" options="map.options" draggable="true" events="map.events" tophe-map-resize="{marginTop : 60}">
       <markers models="stations" coords="'self'" labelContent="address" fit="fitMap">
         <windows ng-cloak>
           <p ng-non-bindable>{{address}}</p>

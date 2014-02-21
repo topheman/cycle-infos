@@ -17,8 +17,6 @@ angular.module('cycleInfosFullstackApp')
             }, 5000 || api.getCacheDuration());
           };
 
-          waitDisplayRefreshButton();
-
           $scope.refreshStations = function() {
             $scope.displayRefreshButton = false;
             refreshStations(true);
@@ -32,9 +30,7 @@ angular.module('cycleInfosFullstackApp')
                 marker.longitude = marker.position.lng;
                 return marker;
               });
-//              $scope.fitMap = true;
               console.log($scope.stations);
-              console.log($scope.map.bounds);
             });
           };
           
@@ -45,7 +41,6 @@ angular.module('cycleInfosFullstackApp')
               latitude: 48.856614,
               longitude: 2.352222
             },
-            bounds: null,
             zoom: 14,
             options:{
               streetViewControl: false
@@ -54,12 +49,14 @@ angular.module('cycleInfosFullstackApp')
               tilesloaded: function (map) {
                 mapInstance = map;
                 console.log('tilesloaded',map);
+                waitDisplayRefreshButton();
               },
-              bounds_changed: function(){
-                console.log('bounds_changed');
-                $scope.map.bounds = mapInstance ? mapInstance.getBounds() : null;
-                $scope.fitMap = false;
-                console.log($scope.map.bounds,mapInstance ? mapInstance.getBounds() : null);
+              'bounds_changed': function(){
+                if($scope.fitMap === true){
+                  $timeout(function(){
+                    $scope.fitMap = false;//so that the map won't fit again when refreshing data (stay where you are)
+                  },1000);
+                }
               }
             }
           };
