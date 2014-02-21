@@ -51,6 +51,7 @@ angular.module('cycleInfosFullstackApp')
             },
             zoom: 14,
             options:{
+              streetViewControl: false
             }
           };
           
@@ -68,6 +69,13 @@ angular.module('cycleInfosFullstackApp')
             else{
               console.log('No adress entered');
             }
+          };
+          
+          $scope.centerAddress = function(latitude,longitude){
+            $scope.map.center.latitude = latitude;
+            $scope.map.center.longitude = longitude;
+            $scope.map.zoom = 18;
+            $scope.showAddressesList = false;
           };
           
           //dirty

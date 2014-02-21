@@ -4,15 +4,15 @@
     <google-map center="map.center" zoom="map.zoom" options="map.options" draggable="true" tophe-map-resize="{marginTop : 60}">
       <markers models="stations" coords="'self'" labelContent="address" fit="stations.length > 0">
         <windows ng-cloak>
-          <p ng-non-bindable>Address : {{address}}</p>
-          <p ng-non-bindable>Name : {{name}}</p>
-          <p ng-non-bindable>{{'AVAILABLE_BIKES' | translate}} : {{available_bikes}}</p>
-          <p ng-non-bindable>{{'AVAILABLE_STANDS' | translate}} : {{available_bike_stands}}</p>
+          <p ng-non-bindable>{{address}}</p>
+          <p ng-non-bindable>{{name}}</p>
+          <p ng-non-bindable><span class="{{available_bikes === 0 ? 'reserved' : 'free'}}">{{'AVAILABLE_BIKES' | translate}} : {{available_bikes}}</span> / <span class="{{available_bike_stands === 0 ? 'reserved' : 'free'}}">{{'AVAILABLE_STANDS' | translate}} : {{available_bike_stands}}</span></p>
+          <p ng-non-bindable><a href="http://streetview.topheman.com/#lat={{latitude}}&lon={{longitude}}" title="{{'LABEL_TOPHEMAN_STREETVIEW' | translate}}">{{'LABEL_TOPHEMAN_STREETVIEW' | translate}}</a></p>
         </windows>
       </markers>
     </google-map>
     <ul class="addresses list-group" ng-show="showAddressesList" ng-cloak>
-      <li class="list-group-item" ng-repeat="address in addressesList">{{address.formatted_address}} / {{address.geometry.location.d}} - {{address.geometry.location.e}}</li>
+      <li class="list-group-item" ng-repeat="address in addressesList" ng-click="centerAddress(address.geometry.location.d,address.geometry.location.e)">{{address.formatted_address}}</li>
     </ul>
   </section>
 </div>

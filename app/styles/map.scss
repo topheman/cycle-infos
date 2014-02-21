@@ -3,6 +3,12 @@
 #view-map{
   .angular-google-map-container {
     height: 400px;
+    .reserved{
+      color:red;
+    }
+    .free{
+      color:green;
+    }
   }
   ul.addresses{
     position:absolute;

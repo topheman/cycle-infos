@@ -34,7 +34,8 @@ angular.module('cycleInfosFullstackApp', [
       'CITY': 'City',
       'CITIES': 'Cities',
       'AVAILABLE_BIKES' : 'Available bikes',
-      'AVAILABLE_STANDS' : 'Available stands'
+      'AVAILABLE_STANDS' : 'Available stands',
+      'LABEL_TOPHEMAN_STREETVIEW' : 'See in Topheman StreetView'
     });
     $translateProvider.translations('fr',{
       'WELCOME' : 'Bienvenue à vous, {{username}}',
@@ -43,7 +44,8 @@ angular.module('cycleInfosFullstackApp', [
       'CITY': 'Ville',
       'CITIES': 'Villes',
       'AVAILABLE_BIKES' : 'Vélos libres',
-      'AVAILABLE_STANDS' : 'Places libres'
+      'AVAILABLE_STANDS' : 'Places libres',
+      'LABEL_TOPHEMAN_STREETVIEW' : 'Voir sur Topheman StreetView'
     });
     $translateProvider.preferredLanguage(localStorage ? localStorage.getItem('language') : 'en');
     localStorageServiceProvider.setPrefix('');
