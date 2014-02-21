@@ -4,4 +4,46 @@
   .angular-google-map-container {
     height: 400px;
   }
+  ul.addresses{
+    position:absolute;
+    margin:0px auto;
+    top:$navbar-height + 20px;
+    bottom:20px;
+    left:20%;
+    right:20%;
+    min-height: 200px;
+    display: block;
+    background-color: grey;
+    overflow-y: scroll;
+    li{
+      cursor: pointer;
+      &:hover{
+        background-color: #FFCCCC;
+      }
+    }
+  }
+}
+
+/* Other : Tablets */
+@media screen and (max-width : 768px) {
+  #view-map{
+    ul.addresses{
+      top:$navbar-height + 10px;
+      left:10%;
+      right:10%;
+      bottom:10px;
+    }
+  }
+}
+
+/* Other : Mobiles */
+@media screen and (max-width : 480px) {
+  #view-map{
+    ul.addresses{
+      top:$navbar-height;
+      left:0%;
+      right:0%;
+      bottom:0;
+    }
+  }
 }

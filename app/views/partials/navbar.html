@@ -8,9 +8,9 @@
       <button type="button" class="btn btn-default logo-refresh" ng-show="displayRefreshButton" ng-click="refreshStations()"><i class="glyphicon glyphicon-refresh"></i></button>
       <ul class="navbar-header pull-right input-wrapper">
         <li class="search-wrapper">
-          <form>
+          <form ng-submit="searchAddress()">
             <i class="glyphicon glyphicon-search"></i>
-            <input type="search" class="form-control" name="location" placeholder="{{ 'MAP_SEARCH_PLACEHOLDER' | translate }}" autocomplete="off" />
+            <input type="search" class="form-control" name="searchLocation" ng-model="searchLocation" placeholder="{{ 'MAP_SEARCH_PLACEHOLDER' | translate }}" autocomplete="off" />
           </form>
         </li>
       </ul>

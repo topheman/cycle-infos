@@ -8,7 +8,8 @@ angular.module('cycleInfosFullstackApp', [
   'LocalStorageModule',
   'pascalprecht.translate',
   'jmdobry.angular-cache',
-  'google-maps'
+  'google-maps',
+  'googleMapsGeocoderModule'
 ])
   .config(['$routeProvider', '$locationProvider', '$translateProvider', 'localStorageServiceProvider', '$angularCacheFactoryProvider',function ($routeProvider, $locationProvider, $translateProvider, localStorageServiceProvider, $angularCacheFactoryProvider) {
     $routeProvider

@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('cycleInfosFullstackApp')
-        .controller('MapCtrl', function($scope, $timeout, api) {
+        .controller('MapCtrl', function($scope, $timeout, api, googleMapsGeocoder) {
 
           $scope.stations = [];
           $scope.displayRefreshButton = false;
           $scope.fitMap = true;
+          $scope.addressesList = [];
+          $scope.showAddressesList = false;
 
           var waitDisplayRefreshButton = function() {
             $timeout(function() {
@@ -49,6 +51,22 @@ angular.module('cycleInfosFullstackApp')
             },
             zoom: 14,
             options:{
+            }
+          };
+          
+          $scope.searchAddress = function(){
+            console.log('searchAddress',this.searchLocation);
+            if(this.searchLocation !== ''){
+              googleMapsGeocoder(this.searchLocation,function(error,results){
+                $scope.$apply(function(){
+                  console.log(results);
+                  $scope.addressesList = results;
+                  $scope.showAddressesList = true;
+                });
+              });
+            }
+            else{
+              console.log('No adress entered');
             }
           };
           
