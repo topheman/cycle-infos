@@ -8,6 +8,8 @@ angular.module('cycleInfosFullstackApp')
           $scope.fitMap = true;
           $scope.addressesList = [];
           $scope.showAddressesList = false;
+          
+          var mapInstance = null;
 
           var waitDisplayRefreshButton = function() {
             $timeout(function() {
@@ -19,39 +21,46 @@ angular.module('cycleInfosFullstackApp')
 
           $scope.refreshStations = function() {
             $scope.displayRefreshButton = false;
+            refreshStations(true);
             waitDisplayRefreshButton();
           };
-
-          api.getStations().then(function(result) {
-            $scope.stations = result.data.map(function(marker){
-              marker.latitude = marker.position.lat;
-              marker.longitude = marker.position.lng;
-              marker.closeClick = function () {
-                marker.showWindow = false;
-                $scope.$apply();
-                console.log('close click');
-              };
-              marker.onClicked = function () {
-                onMarkerClicked(marker);
-              };
-              return marker;
+          
+          var refreshStations = function(force){
+            api.getStations(force).then(function(result) {
+              $scope.stations = result.data.map(function(marker){
+                marker.latitude = marker.position.lat;
+                marker.longitude = marker.position.lng;
+                return marker;
+              });
+//              $scope.fitMap = true;
+              console.log($scope.stations);
+              console.log($scope.map.bounds);
             });
-            console.log($scope.stations);
-          });
-
-          var onMarkerClicked = function (marker) {
-            marker.showWindow = true;
-            console.log('clicked');
           };
+          
+          refreshStations();
 
           $scope.map = {
             center: {
               latitude: 48.856614,
               longitude: 2.352222
             },
+            bounds: null,
             zoom: 14,
             options:{
               streetViewControl: false
+            },
+            events: {
+              tilesloaded: function (map) {
+                mapInstance = map;
+                console.log('tilesloaded',map);
+              },
+              bounds_changed: function(){
+                console.log('bounds_changed');
+                $scope.map.bounds = mapInstance ? mapInstance.getBounds() : null;
+                $scope.fitMap = false;
+                console.log($scope.map.bounds,mapInstance ? mapInstance.getBounds() : null);
+              }
             }
           };
           

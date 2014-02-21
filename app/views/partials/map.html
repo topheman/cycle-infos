@@ -1,12 +1,13 @@
 <div id="view-map">
   <div ng-include="'partials/navbar'"></div>
   <section>
-    <google-map center="map.center" zoom="map.zoom" options="map.options" draggable="true" tophe-map-resize="{marginTop : 60}">
-      <markers models="stations" coords="'self'" labelContent="address" fit="stations.length > 0">
+    <google-map center="map.center" zoom="map.zoom" options="map.options" draggable="true" bounds="map.bounds" events="map.events" tophe-map-resize="{marginTop : 60}">
+      <markers models="stations" coords="'self'" labelContent="address" fit="fitMap">
         <windows ng-cloak>
           <p ng-non-bindable>{{address}}</p>
           <p ng-non-bindable>{{name}}</p>
           <p ng-non-bindable><span class="{{available_bikes === 0 ? 'reserved' : 'free'}}">{{'AVAILABLE_BIKES' | translate}} : {{available_bikes}}</span> / <span class="{{available_bike_stands === 0 ? 'reserved' : 'free'}}">{{'AVAILABLE_STANDS' | translate}} : {{available_bike_stands}}</span></p>
+          <p ng-non-bindable>{{'LAST_UPDATED' | translate}} : {{last_update| date : "HH'h'mm'm'ss's'"}}</p>
           <p ng-non-bindable><a href="http://streetview.topheman.com/#lat={{latitude}}&lon={{longitude}}" title="{{'LABEL_TOPHEMAN_STREETVIEW' | translate}}">{{'LABEL_TOPHEMAN_STREETVIEW' | translate}}</a></p>
         </windows>
       </markers>
