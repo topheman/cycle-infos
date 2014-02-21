@@ -30,7 +30,10 @@ angular.module('cycleInfosFullstackApp', [
     $translateProvider.translations('en',{
       'WELCOME' : 'Welcome to you, {{username}}',
       'HOME_SELECT_CHOICE' : 'Choose a service / city',
-      'MAP_SEARCH_PLACEHOLDER' : 'Enter a location ...',
+      'MAP_SEARCH_LOCATION_PLACEHOLDER' : 'Enter a location ...',
+      'MAP_SEARCH_STATION_PLACEHOLDER' : 'Enter a station ...',
+      'MAP_CHOOSE_LOCATION' : 'Choose a location',
+      'MAP_CHOOSE_STATION' : 'Choose a station',
       'CITY': 'City',
       'CITIES': 'Cities',
       'AVAILABLE_BIKES' : 'Available bikes',
@@ -41,7 +44,9 @@ angular.module('cycleInfosFullstackApp', [
     $translateProvider.translations('fr',{
       'WELCOME' : 'Bienvenue à vous, {{username}}',
       'HOME_SELECT_CHOICE' : 'Choisissez un service / une ville',
-      'MAP_SEARCH_PLACEHOLDER' : 'Entrez une adresse ..',
+      'MAP_SEARCH_LOCATION_PLACEHOLDER' : 'Entrez une adresse ..',
+      'MAP_CHOOSE_LOCATION' : 'Choisissez une adresse',
+      'MAP_CHOOSE_STATION' : 'Choisissez une borne',
       'CITY': 'Ville',
       'CITIES': 'Villes',
       'AVAILABLE_BIKES' : 'Vélos libres',

@@ -6,14 +6,20 @@
         <windows ng-cloak>
           <p ng-non-bindable>{{address}}</p>
           <p ng-non-bindable>{{name}}</p>
-          <p ng-non-bindable><span class="{{available_bikes === 0 ? 'reserved' : 'free'}}">{{'AVAILABLE_BIKES' | translate}} : {{available_bikes}}</span> / <span class="{{available_bike_stands === 0 ? 'reserved' : 'free'}}">{{'AVAILABLE_STANDS' | translate}} : {{available_bike_stands}}</span></p>
-          <p ng-non-bindable>{{'LAST_UPDATED' | translate}} : {{last_update| date : "HH'h'mm'm'ss's'"}}</p>
-          <p ng-non-bindable><a href="http://streetview.topheman.com/#lat={{latitude}}&lon={{longitude}}" title="{{'LABEL_TOPHEMAN_STREETVIEW' | translate}}">{{'LABEL_TOPHEMAN_STREETVIEW' | translate}}</a></p>
+          <p ng-non-bindable><span class="{{available_bikes === 0 ? 'reserved' : 'free'}}">{{'AVAILABLE_BIKES'| translate}} : {{available_bikes}}</span> / <span class="{{available_bike_stands === 0 ? 'reserved' : 'free'}}">{{'AVAILABLE_STANDS'| translate}} : {{available_bike_stands}}</span></p>
+          <p ng-non-bindable>{{'LAST_UPDATED'| translate}} : {{last_update| date : "HH'h'mm'm'ss's'"}}</p>
+          <p ng-non-bindable><a href="http://streetview.topheman.com/#lat={{latitude}}&lon={{longitude}}" title="{{'LABEL_TOPHEMAN_STREETVIEW'| translate}}">{{'LABEL_TOPHEMAN_STREETVIEW'| translate}}</a></p>
         </windows>
       </markers>
     </google-map>
-    <ul class="addresses list-group" ng-show="showAddressesList" ng-cloak>
-      <li class="list-group-item" ng-repeat="address in addressesList" ng-click="centerAddress(address.geometry.location.d,address.geometry.location.e)">{{address.formatted_address}}</li>
-    </ul>
+<!--    <ul class="addresses list-group" ng-show="showAddressesList" ng-cloak>
+      <li class="list-group-item" ng-repeat="address in addressesList" ng-click="centerAddress(address.geometry.location.d, address.geometry.location.e)">{{address.formatted_address}}</li>
+    </ul>-->
+    <div class="addresses panel panel-default" ng-show="showAddressesList" ng-cloak>
+      <div class="panel-heading">{{'MAP_CHOOSE_LOCATION'| translate}} </div>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="address in addressesList" ng-click="centerAddress(address.geometry.location.d, address.geometry.location.e)">{{address.formatted_address}}</li>
+      </ul>
+    </div>
   </section>
 </div>

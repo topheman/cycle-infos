@@ -26,7 +26,7 @@ header{
     li{
       float: left;
     }
-    li.search-wrapper {
+    li.search {
       position: relative;
       input{
         width:180px;
@@ -44,7 +44,7 @@ header{
 
 #view-home{
   header{
-    li.search-wrapper{
+    li.search{
       display:none;
     }
     .logo-light{
@@ -63,10 +63,13 @@ header{
       .logo{
         display:none;
       }
-      li.search-wrapper{
+      li.search-address-wrapper{
         input{
           width:160px;
         }
+      }
+      li.search-station-wrapper{
+        display: none;
       }
     }
   }
