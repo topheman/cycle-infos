@@ -45,6 +45,7 @@ angular.module('cycleInfosFullstackApp', [
       'WELCOME' : 'Bienvenue à vous, {{username}}',
       'HOME_SELECT_CHOICE' : 'Choisissez un service / une ville',
       'MAP_SEARCH_LOCATION_PLACEHOLDER' : 'Entrez une adresse ..',
+      'MAP_SEARCH_STATION_PLACEHOLDER' : 'Entrez une station ...',
       'MAP_CHOOSE_LOCATION' : 'Choisissez une adresse',
       'MAP_CHOOSE_STATION' : 'Choisissez une borne',
       'CITY': 'Ville',
