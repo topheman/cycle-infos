@@ -13,15 +13,15 @@
       </markers>
     </google-map>
     <div class="tophe-list addresses panel panel-default" ng-show="addresses.show" ng-cloak>
-      <div class="panel-heading">{{'MAP_CHOOSE_LOCATION'| translate}} </div>
+      <div class="panel-heading">{{'MAP_CHOOSE_LOCATION'| translate}} <button type="button" class="close" aria-hidden="true" ng-click="closeLists()">&times;</button></div>
       <ul class="list-group">
         <li class="list-group-item" ng-repeat="address in addresses.list" ng-click="centerAddress(address.geometry.location.d, address.geometry.location.e)">{{address.formatted_address}}</li>
       </ul>
     </div>
     <div class="tophe-list stations panel panel-default" ng-show="stations.show" ng-cloak>
-      <div class="panel-heading">{{'MAP_CHOOSE_STATION'| translate}} </div>
+      <div class="panel-heading">{{'MAP_CHOOSE_STATION'| translate}} <button type="button" class="close" aria-hidden="true" ng-click="closeLists()">&times;</button></div>
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="station in stations.list" ng-click="centerAddress(station.latitude, station.longitude)">{{station.address}}</li>
+        <li class="list-group-item" ng-repeat="station in stations.list | filter:stations.search:strict | orderBy:asc" ng-click="centerAddress(station.latitude, station.longitude)">{{station.address}}</li>
       </ul>
     </div>
   </section>

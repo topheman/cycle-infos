@@ -42,7 +42,7 @@ $panel-heading-height : 45px;
 /* Other : Tablets */
 @media screen and (max-width : 768px) {
   #view-map{
-    .addresses{
+    .tophe-list{
       top:$navbar-height + 10px;
       left:10%;
       right:10%;
@@ -54,7 +54,7 @@ $panel-heading-height : 45px;
 /* Other : Mobiles */
 @media screen and (max-width : 480px) {
   #view-map{
-    .addresses{
+    .tophe-list{
       top:$navbar-height;
       left:0%;
       right:0%;

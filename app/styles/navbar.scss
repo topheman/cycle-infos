@@ -71,6 +71,14 @@ header{
           width:160px;
         }
       }
+    }
+  }
+}
+
+/* Responsive: Mobiles */
+@media screen and (max-width : 700px) {
+  #view-map{
+    header{
       li.search-station-wrapper{
         display: none;
       }

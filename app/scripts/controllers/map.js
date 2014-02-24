@@ -42,6 +42,11 @@ angular.module('cycleInfosFullstackApp')
           };
           
           refreshStations();
+          
+          $scope.closeLists = function(){
+            $scope.stations.show = false;
+            $scope.addresses.show = false;
+          };
 
           $scope.map = {
             fit : true,
@@ -103,6 +108,7 @@ angular.module('cycleInfosFullstackApp')
             $scope.map.center.longitude = longitude;
             $scope.map.zoom = 18;
             $scope.addresses.show = false;
+            $scope.stations.show = false;
           };
           
           //dirty
