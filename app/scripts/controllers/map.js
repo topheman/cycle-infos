@@ -3,17 +3,18 @@
 angular.module('cycleInfosFullstackApp')
         .controller('MapCtrl', function($scope, $timeout, api, googleMapsGeocoder) {
 
-          $scope.search = {
-            location : '',
-            station : ''
-          };
-          $scope.stations = [];
           $scope.displayRefreshButton = false;
-          $scope.fitMap = true;
-          $scope.addressesList = [];
-          $scope.showAddressesList = false;
-          $scope.stationsList = [];
-          $scope.showStationsList = false;
+          
+          $scope.stations = {
+            search  : '',
+            show    : false,
+            list    : []
+          };
+          $scope.addresses = {
+            search  : '',
+            show    : false,
+            list    : []
+          };
           
           var mapInstance = null;
           
@@ -31,18 +32,19 @@ angular.module('cycleInfosFullstackApp')
           
           var refreshStations = function(force){
             api.getStations(force).then(function(result) {
-              $scope.stations = result.data.map(function(marker){
+              $scope.stations.list = result.data.map(function(marker){
                 marker.latitude = marker.position.lat;
                 marker.longitude = marker.position.lng;
                 return marker;
               });
-              console.log($scope.stations);
+              console.log($scope.stations.list);
             });
           };
           
           refreshStations();
 
           $scope.map = {
+            fit : true,
             center: {
               latitude: 48.856614,
               longitude: 2.352222
@@ -58,9 +60,9 @@ angular.module('cycleInfosFullstackApp')
                 waitDisplayRefreshButton();
               },
               'bounds_changed': function(){
-                if($scope.fitMap === true){
+                if($scope.map.fit === true){
                   $timeout(function(){
-                    $scope.fitMap = false;//so that the map won't fit again when refreshing data (stay where you are)
+                    $scope.map.fit = false;//so that the map won't fit again when refreshing data (stay where you are)
                   },1000);
                 }
               }
@@ -68,14 +70,14 @@ angular.module('cycleInfosFullstackApp')
           };
           
           $scope.searchAddress = function(){
-            console.log('searchAddress',this.search.location);
-            if(this.search.location !== ''){
-              googleMapsGeocoder(this.search.location,function(error,results){
+            console.log('searchAddress',this.addresses.search);
+            if(this.addresses.search !== ''){
+              googleMapsGeocoder(this.addresses.search,function(error,results){
                 $scope.$apply(function(){
                   console.log(results);
-                  $scope.addressesList = results;
-                  $scope.showStationsList = false;
-                  $scope.showAddressesList = true;
+                  $scope.addresses.list = results;
+                  $scope.stations.show = false;
+                  $scope.addresses.show = true;
                 });
               });
             }
@@ -84,15 +86,15 @@ angular.module('cycleInfosFullstackApp')
             }
           };
           
-          $scope.$watch('search.station',function(value){
+          $scope.$watch('stations.search',function(value){
             console.log('station ?',value);
             if(value !== ''){
-              $scope.showStationsList = false;
-              $scope.showAddressesList = true;
+              $scope.stations.show = true;
+              $scope.addresses.show = false;
             }
             else{
-              $scope.showStationsList = false;
-              $scope.showAddressesList = false;
+              $scope.stations.show = false;
+              $scope.addresses.show = false;
             }
           });
           
@@ -100,7 +102,7 @@ angular.module('cycleInfosFullstackApp')
             $scope.map.center.latitude = latitude;
             $scope.map.center.longitude = longitude;
             $scope.map.zoom = 18;
-            $scope.showAddressesList = false;
+            $scope.addresses.show = false;
           };
           
           //dirty

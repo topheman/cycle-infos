@@ -2,7 +2,7 @@
   <div ng-include="'partials/navbar'"></div>
   <section>
     <google-map center="map.center" zoom="map.zoom" options="map.options" draggable="true" events="map.events" tophe-map-resize="{marginTop : 60}">
-      <markers models="stations" coords="'self'" labelContent="address" fit="fitMap">
+      <markers models="stations.list" coords="'self'" labelContent="address" fit="map.fit">
         <windows ng-cloak>
           <p ng-non-bindable>{{address}}</p>
           <p ng-non-bindable>{{name}}</p>
@@ -12,16 +12,16 @@
         </windows>
       </markers>
     </google-map>
-    <div class="tophe-list addresses panel panel-default" ng-show="showAddressesList" ng-cloak>
+    <div class="tophe-list addresses panel panel-default" ng-show="addresses.show" ng-cloak>
       <div class="panel-heading">{{'MAP_CHOOSE_LOCATION'| translate}} </div>
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="address in addressesList" ng-click="centerAddress(address.geometry.location.d, address.geometry.location.e)">{{address.formatted_address}}</li>
+        <li class="list-group-item" ng-repeat="address in addresses.list" ng-click="centerAddress(address.geometry.location.d, address.geometry.location.e)">{{address.formatted_address}}</li>
       </ul>
     </div>
-    <div class="tophe-list stations panel panel-default" ng-show="showStationsList" ng-cloak>
+    <div class="tophe-list stations panel panel-default" ng-show="stations.show" ng-cloak>
       <div class="panel-heading">{{'MAP_CHOOSE_STATION'| translate}} </div>
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="station in showStationsList" ng-click="centerAddress(station.latitude, station.longitude)">{{station.address}}</li>
+        <li class="list-group-item" ng-repeat="station in stations.list" ng-click="centerAddress(station.latitude, station.longitude)">{{station.address}}</li>
       </ul>
     </div>
   </section>

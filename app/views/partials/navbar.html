@@ -10,13 +10,13 @@
         <li class="search-station-wrapper search">
           <form>
             <i class="glyphicon glyphicon-search"></i>
-            <input type="search" class="form-control" ng-model="search.station" placeholder="{{ 'MAP_SEARCH_STATION_PLACEHOLDER' | translate }}" autocomplete="off" />
+            <input type="search" class="form-control" ng-model="stations.search" placeholder="{{ 'MAP_SEARCH_STATION_PLACEHOLDER' | translate }}" autocomplete="off" />
           </form>
         </li>
         <li class="search-address-wrapper search">
           <form ng-submit="searchAddress()">
             <i class="glyphicon glyphicon-search"></i>
-            <input type="search" class="form-control" ng-model="search.location" placeholder="{{ 'MAP_SEARCH_LOCATION_PLACEHOLDER' | translate }}" autocomplete="off" />
+            <input type="search" class="form-control" ng-model="addresses.search" placeholder="{{ 'MAP_SEARCH_LOCATION_PLACEHOLDER' | translate }}" autocomplete="off" />
           </form>
         </li>
       </ul>
