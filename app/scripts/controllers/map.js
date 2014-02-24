@@ -3,14 +3,20 @@
 angular.module('cycleInfosFullstackApp')
         .controller('MapCtrl', function($scope, $timeout, api, googleMapsGeocoder) {
 
+          $scope.search = {
+            location : '',
+            station : ''
+          };
           $scope.stations = [];
           $scope.displayRefreshButton = false;
           $scope.fitMap = true;
           $scope.addressesList = [];
           $scope.showAddressesList = false;
+          $scope.stationsList = [];
+          $scope.showStationsList = false;
           
           var mapInstance = null;
-
+          
           var waitDisplayRefreshButton = function() {
             $timeout(function() {
               $scope.displayRefreshButton = true;
@@ -62,12 +68,13 @@ angular.module('cycleInfosFullstackApp')
           };
           
           $scope.searchAddress = function(){
-            console.log('searchAddress',this.searchLocation);
-            if(this.searchLocation !== ''){
-              googleMapsGeocoder(this.searchLocation,function(error,results){
+            console.log('searchAddress',this.search.location);
+            if(this.search.location !== ''){
+              googleMapsGeocoder(this.search.location,function(error,results){
                 $scope.$apply(function(){
                   console.log(results);
                   $scope.addressesList = results;
+                  $scope.showStationsList = false;
                   $scope.showAddressesList = true;
                 });
               });
@@ -76,6 +83,18 @@ angular.module('cycleInfosFullstackApp')
               console.log('No adress entered');
             }
           };
+          
+          $scope.$watch('search.station',function(value){
+            console.log('station ?',value);
+            if(value !== ''){
+              $scope.showStationsList = false;
+              $scope.showAddressesList = true;
+            }
+            else{
+              $scope.showStationsList = false;
+              $scope.showAddressesList = false;
+            }
+          });
           
           $scope.centerAddress = function(latitude,longitude){
             $scope.map.center.latitude = latitude;

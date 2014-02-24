@@ -12,7 +12,7 @@ $panel-heading-height : 45px;
       color:green;
     }
   }
-  .addresses{
+  .tophe-list{
     position:absolute;
     margin:0px auto;
     top:$navbar-height + 20px;
@@ -21,7 +21,7 @@ $panel-heading-height : 45px;
     right:20%;
     min-height: 200px;
     display: block;
-    background-color: grey;
+    background-color: #f0f0f0;
     .panel-heading{
       height:$panel-heading-height;
     }
