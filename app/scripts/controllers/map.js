@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('cycleInfosFullstackApp')
-        .controller('MapCtrl', function($scope, $timeout, api, googleMapsGeocoder) {
+        .controller('MapCtrl', function($scope, $timeout, $location, api, googleMapsGeocoder) {
+
+          if(api.getCurrentContract() === null){
+            $location.path('/');
+          }
 
           $scope.displayRefreshButton = false;
           

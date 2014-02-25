@@ -122,17 +122,37 @@ module.exports = function (grunt) {
             '.tmp',
             '<%= yeoman.dist %>/views/*',
             '<%= yeoman.dist %>/public/*',
-            '!<%= yeoman.dist %>/public/.git*',
+            '!<%= yeoman.dist %>/public/.git*'
           ]
         }]
       },
-      heroku: {
+      'heroku-after-build-copy': {
+        files: [{
+          dot: true,
+          src: [
+            'heroku/lib/config/env/*',
+            '!heroku/lib/config/env/all.js',
+            '!heroku/lib/config/env/development.default.js',
+            '!heroku/lib/config/env/production.default.js'
+          ]
+        }]
+      },
+      'heroku-before-copy': {
         files: [{
           dot: true,
           src: [
             'heroku/*',
             '!heroku/.git*',
             '!heroku/Procfile'
+          ]
+        }]
+      },
+      'heroku-end': {
+        files: [{
+          dot: true,
+          src: [
+            'heroku/lib/config/env/development.default.js',
+            'heroku/lib/config/env/production.default.js'
           ]
         }]
       },
@@ -335,6 +355,18 @@ module.exports = function (grunt) {
           {src: 'lib/config/env/production.default.js', dest : 'lib/config/env/production.js'},
           {src: 'lib/config/env/test.default.js', dest : 'lib/config/env/test.js'}
         ]
+      },
+      heroku: {
+        expand: true,
+        cwd: '<%= yeoman.dist %>',
+        dest: 'heroku',
+        src: '**'
+      },
+      'heroku-config':{
+        files:[
+          {src: 'heroku/lib/config/env/production.default.js', dest : 'heroku/lib/config/env/production.js'},
+          {src: 'heroku/lib/config/env/development.default.js', dest : 'heroku/lib/config/env/development.js'}
+        ]
       }
     },
 
@@ -441,6 +473,15 @@ module.exports = function (grunt) {
     grunt.log.warn('The `heroku` task has been deprecated. Use `grunt build` to build for deployment.');
     grunt.task.run(['build']);
   });
+  
+  grunt.registerTask('build-heroku', [
+    'build',
+    'clean:heroku-before-copy',
+    'copy:heroku',
+    'clean:heroku-after-build-copy',
+    'copy:heroku-config',
+    'clean:heroku-end'
+  ]);
 
   grunt.registerTask('default', [
     'newer:jshint',
