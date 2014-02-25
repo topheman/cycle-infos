@@ -20,3 +20,10 @@ Then :
 4. `grunt serve` - you're ready to go.
 
 When you want to make a build version, just `grunt build`
+
+To test this built version, set your NODE_ENV to "production"
+
+* `SET NODE_ENV=production` (windows)
+* `export NODE_ENV=production` (linux / OS X)
+
+Make sure to put it back no "development" when you get back to testing.
