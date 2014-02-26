@@ -1,9 +1,11 @@
 cycle-infos-fullstack
 =====================
 
+Test the project at [topheman-cycle-infos.herokuapp.com](http://topheman-cycle-infos.herokuapp.com)
+
 This project was scaffolded with yeoman and its angular-fullstack generator.
 
-There is a minimalist backend in express which calls the JCDecaux API to get the availability of their bikes and bike's stands in real time on their self-service bike offer.
+There is a minimalist backend written in NodeJS, with express which calls the JCDecaux API to get the availability of their bikes and bike's stands in real time on their self-service bike offer.
 
 The challenge was more in the frontent, to use AngularJS, inside the yeoman workflow, using different techs such as :
 
@@ -18,10 +20,10 @@ More on this blog post (comming).
 
 * NodeJS
 * Sass / Compass `gem install compass`
-* Grunt - see [http://gruntjs.com/getting-started](http://gruntjs.com/getting-started) `npm install grunt-cli -g`
+* Grunt - see [gruntjs.com/getting-started](http://gruntjs.com/getting-started) `npm install grunt-cli -g`
 * Bower `npm install bower -g`
 
-First, go to [https://developer.jcdecaux.com](https://developer.jcdecaux.com) and get an api key.
+First, go to [developer.jcdecaux.com](https://developer.jcdecaux.com) and get an api key.
 
 ### Init :
 
