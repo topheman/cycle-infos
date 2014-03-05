@@ -8,6 +8,15 @@ header{
       margin-right: auto;
     }
   }
+  .navbar-header{
+    a.logo{
+      padding: 6px;
+      cursor:pointer;
+    }
+    .badge{
+      
+    }
+  }
   nav.navbar{
     min-height: $navbar-height;
   }

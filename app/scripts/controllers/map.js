@@ -1,3 +1,10 @@
+/**
+ * Copyright (C) 2014 Christophe Rosset <tophe@topheman.com> - https://github.com/topheman/cycle-infos
+ * 
+ * Released under MIT License :
+ * https://github.com/topheman/cycle-infos/blob/master/LICENSE
+ */
+
 'use strict';
 
 angular.module('cycleInfosFullstackApp')
@@ -5,6 +12,9 @@ angular.module('cycleInfosFullstackApp')
 
           if(api.getCurrentContract() === null){
             $location.path('/');
+          }
+          else{
+            $scope.currentContract = api.getCurrentContract();
           }
 
           $scope.displayRefreshButton = false;

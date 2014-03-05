@@ -1,8 +1,15 @@
-'use strict';
+/**
+ * Copyright (C) 2014 Christophe Rosset <tophe@topheman.com> - https://github.com/topheman/cycle-infos
+ * 
+ * Released under MIT License :
+ * https://github.com/topheman/cycle-infos/blob/master/LICENSE
+ */
 
 /**
  * Inspired by the googleMaps.geocoder.js in streetview.topheman.com
  */
+
+'use strict';
 
 angular.module('googleMapsGeocoderModule',[])
         .service('googleMapsGeocoder', function() {

@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header pull-left home-anchor-wrapper">
-        <a class="navbar-brand logo" ng-href="/">Topheman Cycle Infos</a>
+        <a class="navbar-brand logo" go-click="/">Topheman Cycle Infos <br><span class="badge">{{currentContract}}</span></a>
         <button type="button" class="btn btn-default logo-light" go-click="/"><i class="glyphicon glyphicon-home"></i></button>
       </div>
       <button type="button" class="btn btn-default logo-refresh" ng-show="displayRefreshButton" ng-click="refreshStations()"><i class="glyphicon glyphicon-refresh"></i></button>

@@ -1,5 +1,5 @@
-cycle-infos-fullstack
-=====================
+cycle-infos
+===========
 
 Test the project at [topheman-cycle-infos.herokuapp.com](http://topheman-cycle-infos.herokuapp.com)
 
@@ -48,3 +48,13 @@ Once you've built, to test in real : set your `NODE_ENV` to `production` (the se
 To launch your built solution : `node dist/server.js` then go to `http://localhost:3000`
 
 Make sure to put back `NODE_ENV` the way it was ("development" or nothing) when you get back to testing.
+
+### Launch to heroku
+
+The yeoman fullstack generator is great. All you have to do (assuming you have already installed the heroku belt), is to :
+
+* `yo angular-fullstack:deploy heroku`
+* `cd dist`
+* `git push heroku master`
+
+See more here : http://tylerhenkel.com/creating-apps-with-angular-and-node-using-yeoman/
