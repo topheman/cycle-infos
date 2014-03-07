@@ -30,8 +30,6 @@ angular.module('cycleInfosFullstackApp')
             list    : []
           };
           
-          var mapInstance = null;
-          
           var waitDisplayRefreshButton = function() {
             $timeout(function() {
               $scope.displayRefreshButton = true;
@@ -73,9 +71,8 @@ angular.module('cycleInfosFullstackApp')
               streetViewControl: false
             },
             events: {
-              tilesloaded: function (map) {
-                mapInstance = map;
-                console.log('tilesloaded',map);
+              tilesloaded: function () {
+                console.log('tilesloaded');
                 waitDisplayRefreshButton();
               },
               'bounds_changed': function(){
@@ -124,6 +121,12 @@ angular.module('cycleInfosFullstackApp')
             $scope.addresses.show = false;
             $scope.stations.show = false;
           };
+          
+          $scope.$on('$destroy',function(){
+            console.log('$destroy');
+            $scope.stations.list.length = 0;
+            $scope.map = null;
+          });
           
           //dirty
           if(/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm|mobile|tablet/i.test(navigator.userAgent.toLowerCase())){

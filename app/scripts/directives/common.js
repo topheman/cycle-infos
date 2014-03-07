@@ -20,14 +20,14 @@ myModule.directive('goClick', function($location, $window, api) {
       element.bind('click', function() {
         
         //to free the memory reload page after Paris (big map, lots of markers)
-        if(api.getCurrentContract() === 'Paris'){
-          $window.location.href = path;
-        }
-        else{
+//        if(api.getCurrentContract() === 'Paris'){
+//          $window.location.href = path;
+//        }
+//        else{
           scope.$apply(function() {
             $location.path(path);
           });
-        }
+//        }
       });
       
     };
