@@ -14,7 +14,7 @@ The challenge was more in the frontent, to use AngularJS, inside the yeoman work
 * google maps API
 * build and send to heroku
 
-More on this blog post (comming).
+More on [this blog post](http://dev.topheman.com/topheman-cycle-infos/).
 
 ### Needed :
 
