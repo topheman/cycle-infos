@@ -16,7 +16,6 @@ angular.module('cycleInfosFullstackApp')
       $scope.contracts = result.sort(function(a,b){
         return a.name < b.name ? -1 : 1;
       });
-      console.log(result);
       $scope.contract = api.helpers.getContractByName(localStorageService.get('currentContract'), $scope.contracts);
     });
     

@@ -9,33 +9,8 @@
 
 var myModule = angular.module('cycleInfosFullstackApp');
 
-myModule.directive('goClick', function($location, $window, api) {
-    return function(scope, element, attrs) {
-      var path;
-
-      attrs.$observe('goClick', function(val) {
-        path = val;
-      });
-
-      element.bind('click', function() {
-        
-        //to free the memory reload page after Paris (big map, lots of markers)
-//        if(api.getCurrentContract() === 'Paris'){
-//          $window.location.href = path;
-//        }
-//        else{
-          scope.$apply(function() {
-            $location.path(path);
-          });
-//        }
-      });
-      
-    };
-  });
-
 myModule.directive('topheMapResize', ['$window', function($window) {
     return function(scope, element, attrs) {
-      console.log('directive topheMapResize', 'scope', scope, 'element', element, 'attrs', attrs);
       var resizeHandler,
               marginTop = scope.$eval(attrs.topheMapResize).marginTop || 0,
               timer = false,
@@ -52,6 +27,7 @@ myModule.directive('topheMapResize', ['$window', function($window) {
         console.log('launch resize');
       };
 
+      //not to trigger resize of the map at each resize event
       $window.addEventListener('resize', function(e) {
         if (!timer) {
           timer = setTimeout(resizeHandler, 800);

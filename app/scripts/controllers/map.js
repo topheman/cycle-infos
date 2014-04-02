@@ -49,7 +49,6 @@ angular.module('cycleInfosFullstackApp')
                 marker.longitude = marker.position.lng;
                 return marker;
               });
-              console.log($scope.stations.list);
             });
           };
           
@@ -72,7 +71,6 @@ angular.module('cycleInfosFullstackApp')
             },
             events: {
               tilesloaded: function () {
-                console.log('tilesloaded');
                 waitDisplayRefreshButton();
               },
               'bounds_changed': function(){
@@ -86,11 +84,9 @@ angular.module('cycleInfosFullstackApp')
           };
           
           $scope.searchAddress = function(){
-            console.log('searchAddress',this.addresses.search);
             if(this.addresses.search !== ''){
               googleMapsGeocoder(this.addresses.search,function(error,results){
                 $scope.$apply(function(){
-                  console.log(results);
                   $scope.addresses.list = results;
                   $scope.stations.show = false;
                   $scope.addresses.show = true;
@@ -98,12 +94,11 @@ angular.module('cycleInfosFullstackApp')
               });
             }
             else{
-              console.log('No adress entered');
+              console.log('No address entered');
             }
           };
           
           $scope.$watch('stations.search',function(value){
-            console.log('station ?',value);
             if(value !== ''){
               $scope.stations.show = true;
               $scope.addresses.show = false;
@@ -123,7 +118,6 @@ angular.module('cycleInfosFullstackApp')
           };
           
           $scope.$on('$destroy',function(){
-            console.log('$destroy');
             $scope.stations.list.length = 0;
             $scope.map = null;
           });
