@@ -11,3 +11,4 @@ dist
 /lib/config/env/test.js
 /lib/config/env/development.js
 /lib/config/env/production.js
+.idea
