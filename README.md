@@ -1,7 +1,7 @@
 cycle-infos
 ===========
 
-Test the project at [topheman-cycle-infos.herokuapp.com](http://topheman-cycle-infos.herokuapp.com)
+Test the project at [topheman-cycle-infos.herokuapp.com](https://topheman-cycle-infos.herokuapp.com)
 
 This project was scaffolded with yeoman and its angular-fullstack generator.
 
@@ -53,7 +53,7 @@ Make sure to put back `NODE_ENV` the way it was ("development" or nothing) when 
 
 The yeoman fullstack generator is great. All you have to do (assuming you have already installed the heroku belt), is to :
 
-* `yo angular-fullstack:deploy heroku`
+* `grunt build-heroku`
 * `cd dist`
 * `git push heroku master`
 
